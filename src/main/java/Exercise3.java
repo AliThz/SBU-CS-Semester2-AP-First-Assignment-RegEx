@@ -11,7 +11,9 @@ public class Exercise3 {
     */
 
     public static String extractURL(String text) {
-        String regex = "write your regex pattern here!";  // TODO
+        String regex = "\\b((?:https?|ftp|file):"
+                + "\\/\\/[-a-zA-Z0-9+&@#\\/%?=~_|!:,.;]*"
+                + "[-a-zA-Z0-9+&@#\\/%=~_|])";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text);

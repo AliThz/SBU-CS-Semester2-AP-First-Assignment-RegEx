@@ -20,8 +20,7 @@ public class Exercise3 {
 
         if (matcher.find()) {
             return matcher.group();
-        }
-        else{
+        } else {
             return null;
         }
     }
@@ -38,8 +37,7 @@ public class Exercise3 {
 
         if (matcher.find()) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -50,8 +48,37 @@ public class Exercise3 {
 
     public static List<String> findWordsWithRepeatLetters(String input) {
         List<String> wordsWithRepeatLetters = new ArrayList<>();
+        List<String> words = new ArrayList<>();
+        String word = "";
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt((i));
+            if (c == ' ' || c== ':' || i == input.length() - 1) {
+                if(c != ' ' && c != ':')
+                    word += c;
+                words.add(word);
+                word = "";
+                continue;
+            }
+            word += c;
+        }
+
+        boolean willBreak;
+        for (String s : words) {
+            willBreak = false;
+            char[] characters = s.toCharArray();
+            for (int i = 0; i < s.length(); i++) {
+                for (int j = i + 1; j < s.length(); j++) {
+                    if (characters[i] == characters[j]) {
+                        wordsWithRepeatLetters.add(s);
+                        willBreak = true;
+                        break;
+                    }
+                }
+                if (willBreak)
+                    break;
+            }
+        }
         return wordsWithRepeatLetters;
-        // TODO
     }
 
     /*

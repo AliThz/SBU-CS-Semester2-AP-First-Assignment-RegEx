@@ -52,8 +52,8 @@ public class Exercise3 {
         String word = "";
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt((i));
-            if (c == ' ' || c== ':' || i == input.length() - 1) {
-                if(c != ' ' && c != ':')
+            if (c == ' ' || c == ':' || i == input.length() - 1) {
+                if (c != ' ' && c != ':')
                     word += c;
                 words.add(word);
                 word = "";
@@ -89,8 +89,48 @@ public class Exercise3 {
 
     public static List<String> findReapetdWords(String input) {
         List<String> repeatedWords = new ArrayList<>();
+        List<String> wordsWithRepeatLetters = new ArrayList<>();
+        List<String> words = new ArrayList<>();
+        String word = "";
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt((i));
+            if (c == ' ' || c == ':' || i == input.length() - 1) {
+                if (c != ' ' && c != ':')
+                    word += c;
+                words.add(word);
+                word = "";
+                continue;
+            }
+            word += c;
+        }
+
+        boolean willBreak;
+        for (String s : words) {
+            willBreak = false;
+            char[] characters = s.toCharArray();
+            for (int i = 0; i < s.length(); i++) {
+                for (int j = i + 1; j < s.length(); j++) {
+                    if (characters[i] == characters[j]) {
+                        wordsWithRepeatLetters.add(s);
+                        willBreak = true;
+                        break;
+                    }
+                }
+                if (willBreak)
+                    break;
+            }
+        }
+
+        for (String s : wordsWithRepeatLetters) {
+            if (s.length() % 2 == 0) {
+                String firstPart = s.substring(0, (s.length() / 2)),
+                        secondPart = s.substring((s.length() / 2));
+                if (firstPart.equals(secondPart))
+                    repeatedWords.add(s);
+            }
+        }
+
         return repeatedWords;
-        // TODO
     }
 
     public static void main(String[] args) {

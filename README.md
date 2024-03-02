@@ -29,6 +29,8 @@ Remember to use Git for version control throughout the assignment. Commit your c
 
 **Note: It is strictly prohibited to use ChatGPT or any other AI generative model for completing any section of this assignment. Failure to comply will result in a score of 0 without any warnings.**
 
+**Trigger actions**
+
 ## Notes 📝
 
 Here are some important points to keep in mind for this assignment:
